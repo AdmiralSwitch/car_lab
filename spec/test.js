@@ -8,7 +8,6 @@ describe('Car', function(){
 
   beforeEach(function(){
     // var today = new Date().getFullYear();
-  
     // create a new myCar object each time
     myCar = new Car();
   });
@@ -107,11 +106,17 @@ describe('Car', function(){
 
   describe('#dropOff', function(){
     it('should remove passenger from the passengers array if car is on', function(){
-      
+      myCar.start();
+      myCar.passengers = ["Kesslee", "The Monarch", "Lex Luthor", "Zorg"];
+      myCar.dropoff("The Monarch");
+      expect(myCar.passengers.length).to.equal(3);
     });
 
     it('should leave passenger in the passengers array if car is off', function(){
-
+      myCar.off();
+      myCar.passengers = ["Kesslee", "The Monarch", "Lex Luthor", "Zorg"];
+      myCar.dropoff("The Monarch");
+      expect(myCar.passengers.length).to.equal(4);
     });
   });
 
